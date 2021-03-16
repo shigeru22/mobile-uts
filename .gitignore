@@ -83,3 +83,9 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# music files, since copyright issues may happen
+*.mp3
+*.ogg
+# *.m4a
+# *.flac
