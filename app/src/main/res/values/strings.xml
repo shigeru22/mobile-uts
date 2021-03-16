@@ -1,0 +1,50 @@
+<resources>
+    <!-- application -->
+    <string name="app_name">UTS_27018</string>
+
+    <!-- menu and login -->
+    <string name="app_title">Music Player</string>
+    <string name="profile">Profil</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <!-- content descriptors -->
+    <string name="player_icon">Player Icon</string>
+
+    <!-- profile -->
+    <string name="id_text">NIM : </string>
+    <string name="name_text">Nama : </string>
+    <string name="class_text">Kelas : </string>
+    <string name="id">00000027018</string>
+    <string name="name">Jeremy Yonathan</string>
+    <string name="class_category">EL</string>
+    <string name="references">References</string>
+    <string name="website">Website:</string>
+    <string name="friends">Teman:</string>
+    <string name="all_friends">James Christian Wira, Michael Roni</string>
+    <!-- sites -->
+    <string name="site1">https://developer.android.com/training/appbar</string>
+    <string name="site2">https://stackoverflow.com/questions/9334618/rounded-button-in-android</string>
+    <!-- content descriptors -->
+    <string name="prof_img_details">Developer\'s Image</string>
+
+    <!-- metadata -->
+    <string name="title">Title</string>
+    <string name="artist">Artist</string>
+    <string name="album">Album</string>
+
+    <!-- list -->
+    <string name="welcome">Selamat Datang</string>
+    <string name="ok">OK</string>
+
+    <!-- player -->
+    <string name="time_zero_values">0:00</string>
+    <string name="previous">Previous</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="next">Next</string>
+    <string name="first_reached">Lagu pertama sedang dimainkan.</string>
+    <string name="last_reached">Lagu terakhir sedang dimainkan.</string>
+    <!-- content descriptors -->
+    <string name="album_art">Album Art</string>
+</resources>
