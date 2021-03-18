@@ -47,23 +47,23 @@ public class NowPlayingActivity extends AppCompatActivity {
     Thread thread = new Thread() {
         @Override
         public void run() {
-        try {
-            while (!thread.isInterrupted()) {
-                Thread.sleep(100);
-                runOnUiThread(() -> countElapsedTime(-1));
+            try {
+                while (!thread.isInterrupted()) {
+                    Thread.sleep(100);
+                    runOnUiThread(() -> countElapsedTime(-1));
 
-                if(player.getCurrentPosition() >= totalTime) {
-                    if(position - 1 < songsList.size()) changeSong(songsList.get(++position));
-                    else {
-                        playerLoaded = false;
-                        player.release();
-                        btnPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play));
+                    if(playerLoaded && player.getCurrentPosition() >= totalTime) {
+                        if(position - 1 < songsList.size()) changeSong(songsList.get(++position));
+                        else {
+                            playerLoaded = false;
+                            player.release();
+                            btnPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play));
+                        }
                     }
                 }
             }
-        }
-        catch (InterruptedException e) {
-        }
+            catch (InterruptedException e) {
+            }
         }
     };
 
@@ -138,7 +138,6 @@ public class NowPlayingActivity extends AppCompatActivity {
         songsList = (ArrayList<Song>) bundle.getSerializable("SongList");
         changeSong(songsList.get(position));
         if(!player.isPlaying()) audioPlayPause();
-
         thread.start();
     }
 
@@ -161,6 +160,8 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     private void exitActivity() {
+        if(!thread.isInterrupted()) thread.interrupt();
+
         try {
             playerLoaded = false;
             player.pause();
@@ -215,8 +216,7 @@ public class NowPlayingActivity extends AppCompatActivity {
             playerLoaded = false;
             wasPlaying = player.isPlaying();
             player.release();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Log.d("debug", "Player has nothing loaded.");
         }
 
@@ -230,8 +230,7 @@ public class NowPlayingActivity extends AppCompatActivity {
             byte[] temp = retriever.getEmbeddedPicture();
             Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
             ivAlbumArt.setImageBitmap(bitmap);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.i("Adapter", e.getMessage());
             ivAlbumArt.setBackgroundColor(Color.GRAY);
         }
@@ -242,7 +241,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         tvTotalTime.setText(msecToTime(totalTime));
         playerLoaded = true;
 
-        if(wasPlaying) {
+        if (wasPlaying) {
             player.start();
             seekBarCounting = true;
             btnPlayPause.setImageDrawable(getDrawable(R.drawable.ic_pause));
