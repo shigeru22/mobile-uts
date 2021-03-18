@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rvSongList = (RecyclerView)findViewById(R.id.rvSongList);
-        // songList = SongsData.getAllSongs(getPackageName(), this);
 
         // permissions handling
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -9,7 +9,6 @@ public class Song implements Serializable {
     private String artist;
     private String album;
     private String uri;
-    private String artData;
 
     public Song(String title, String artist, String album, String uri) {
         this.title = title;
@@ -22,13 +21,11 @@ public class Song implements Serializable {
     public String getArtist() { return artist; }
     public String getAlbum() { return album; }
     public String getURI() { return uri; }
-    // public String getAlbumArtPath() { return artData; }
 
     public void setAlbum(String album) { this.album = album; }
     public void setArtist(String artist) { this.artist = artist; }
     public void setTitle(String title) { this.title = title; }
     public void setURI(String uri) { this.uri = uri; }
-    // public void setAlbumArtPath(String artPath) { this.artData = artData; }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
