@@ -139,6 +139,11 @@ public class NowPlayingActivity extends AppCompatActivity {
         changeSong(songsList.get(position));
         if(!player.isPlaying()) audioPlayPause();
         thread.start();
+
+        // scroll long text
+        tvTitle.setSelected(true);
+        tvArtist.setSelected(true);
+        tvAlbum.setSelected(true);
     }
 
     // options item, only home (back) button
@@ -246,5 +251,7 @@ public class NowPlayingActivity extends AppCompatActivity {
             seekBarCounting = true;
             btnPlayPause.setImageDrawable(getDrawable(R.drawable.ic_pause));
         }
+
+        sbTime.setProgress(0);
     }
 }
