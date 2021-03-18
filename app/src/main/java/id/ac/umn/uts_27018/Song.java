@@ -8,28 +8,27 @@ public class Song implements Serializable {
     private String title;
     private String artist;
     private String album;
-    private int artResource;
-    private int songResource;
+    private String uri;
+    private String artData;
 
-    public Song(String title, String artist, String album, int albumArt, int songResource) {
+    public Song(String title, String artist, String album, String uri) {
         this.title = title;
         this.artist = artist;
         this.album = album;
-        this.artResource = albumArt;
-        this.songResource = songResource;
+        this.uri = uri;
     }
 
     public String getTitle() { return title; }
     public String getArtist() { return artist; }
     public String getAlbum() { return album; }
-    public int getArtResource() { return artResource; }
-    public int getSongResource() { return songResource; }
+    public String getURI() { return uri; }
+    // public String getAlbumArtPath() { return artData; }
 
     public void setAlbum(String album) { this.album = album; }
     public void setArtist(String artist) { this.artist = artist; }
     public void setTitle(String title) { this.title = title; }
-    public void setArtResource(int artResource) { this.artResource = artResource; }
-    public void setSongResource(int songResource) { this.songResource = songResource; }
+    public void setURI(String uri) { this.uri = uri; }
+    // public void setAlbumArtPath(String artPath) { this.artData = artData; }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();

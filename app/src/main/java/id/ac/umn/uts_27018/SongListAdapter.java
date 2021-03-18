@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongIt
     private ArrayList<Song> songsList;
     private LayoutInflater inflater;
     private Context context;
+    private MediaMetadataRetriever retriever;
 
     public SongListAdapter(Context context, ArrayList<Song> songsList) {
         this.context = context;
@@ -38,12 +43,24 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongIt
     @Override
     public void onBindViewHolder(@NonNull SongItemViewHolder holder, int position) {
         Song song = songsList.get(position);
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), song.getArtResource());
 
         holder.tvTitle.setText(song.getTitle());
         holder.tvArtist.setText(song.getArtist());
         holder.tvAlbum.setText(song.getAlbum());
-        holder.ivAlbumArt.setImageBitmap(bitmap);
+
+        retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(context, Uri.parse(song.getURI()));
+        try {
+            byte[] temp = retriever.getEmbeddedPicture();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
+            holder.ivAlbumArt.setImageBitmap(bitmap);
+        }
+        catch (Exception e) {
+            Log.i("Adapter", e.getMessage());
+            holder.ivAlbumArt.setBackgroundColor(Color.GRAY);
+        }
+
+        retriever.close();
     }
 
     @Override

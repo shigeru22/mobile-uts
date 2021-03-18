@@ -47,6 +47,7 @@ public class SongsData {
             R.drawable.art_kenshiyonezu_straysheep
     };
 
+    /*
     public static ArrayList<Song> getAllSongs(String packageName, Context context) {
         int len = allSongsUri.length;
         if(allSongsTitle.length != len && allSongsArtist.length != len && allSongsAlbums.length != len && allSongsAlbumArts.length != len) {
@@ -56,7 +57,6 @@ public class SongsData {
         ArrayList<Song> songList = new ArrayList<>();
 
         for(int i = 0; i < len; i++) {
-            /*
             MediaMetadataRetriever mm = new MediaMetadataRetriever();
             FileDescriptor fd = context.getResources().openRawResourceFd(allSongsUri[i]).getFileDescriptor();
 
@@ -77,7 +77,6 @@ public class SongsData {
             finally {
                 mm.close();
             }
-            */
 
             songList.add(new Song(
                     allSongsTitle[i],
@@ -90,4 +89,5 @@ public class SongsData {
 
         return songList;
     }
+    */
 }

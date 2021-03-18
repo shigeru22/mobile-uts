@@ -12,9 +12,9 @@
     <string name="player_icon">Player Icon</string>
 
     <!-- profile -->
-    <string name="id_text">NIM : </string>
-    <string name="name_text">Nama : </string>
-    <string name="class_text">Kelas : </string>
+    <string name="id_text">NIM</string>
+    <string name="name_text">Nama</string>
+    <string name="class_text">Kelas</string>
     <string name="id">00000027018</string>
     <string name="name">Jeremy Yonathan</string>
     <string name="class_category">EL</string>
@@ -22,9 +22,12 @@
     <string name="website">Website:</string>
     <string name="friends">Teman:</string>
     <string name="all_friends">James Christian Wira, Michael Roni</string>
+    <string name="divider">: </string>
     <!-- sites -->
     <string name="site1">https://developer.android.com/training/appbar</string>
     <string name="site2">https://stackoverflow.com/questions/9334618/rounded-button-in-android</string>
+    <string name="site3">https://www.11zon.com/zon/android/android-play-audio-from-internal-storage.php</string>
+    <string name="site4">https://stackoverflow.com/questions/45090437/display-album-art-using-mediametadataretriever</string>
     <!-- content descriptors -->
     <string name="prof_img_details">Developer\'s Image</string>
 
@@ -36,6 +39,9 @@
     <!-- list -->
     <string name="welcome">Selamat Datang</string>
     <string name="ok">OK</string>
+    <string name="no_songs">Tidak ada lagu di perangkat.</string>
+    <string name="permission_title">Permintaan Belum Diizinkan</string>
+    <string name="permission">Harap izinkan permintaan untuk mengakses penyimpanan. Ini diperlukan untuk membaca dan memutar audio dari perangkat.</string>
 
     <!-- player -->
     <string name="time_zero_values">0:00</string>
