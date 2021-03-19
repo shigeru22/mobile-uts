@@ -47,23 +47,25 @@ public class NowPlayingActivity extends AppCompatActivity {
     Thread thread = new Thread() {
         @Override
         public void run() {
-            try {
-                while (!thread.isInterrupted()) {
-                    Thread.sleep(100);
-                    runOnUiThread(() -> countElapsedTime(-1));
+        try {
+            while (!thread.isInterrupted()) {
+                Thread.sleep(100);
+                runOnUiThread(() -> {
+                    if(seekBarCounting) countElapsedTime(-1);
+                });
 
-                    if(playerLoaded && player.getCurrentPosition() >= totalTime) {
-                        if(position - 1 < songsList.size()) changeSong(songsList.get(++position));
-                        else {
-                            playerLoaded = false;
-                            player.release();
-                            btnPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play));
-                        }
+                if(playerLoaded && player.getCurrentPosition() >= totalTime) {
+                    if(position + 1 < songsList.size()) changeSong(songsList.get(++position));
+                    else {
+                        playerLoaded = false;
+                        player.release();
+                        btnPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play));
                     }
                 }
             }
-            catch (InterruptedException e) {
-            }
+        }
+        catch (InterruptedException e) {
+        }
         }
     };
 
@@ -96,12 +98,15 @@ public class NowPlayingActivity extends AppCompatActivity {
         });
         btnPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { audioPlayPause(); }
+            public void onClick(View view) {
+                if(!playerLoaded) changeSong(songsList.get(position));
+                audioPlayPause();
+            }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (position - 1 < songsList.size()) changeSong(songsList.get(++position));
+                if (position + 1 < songsList.size()) changeSong(songsList.get(++position));
                 else Toast.makeText(context, R.string.last_reached, Toast.LENGTH_SHORT).show();
             }
         });
